@@ -46,3 +46,59 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# -
+
+# debug
+gem "pry"
+gem "pry-rails"
+gem "awesome_print", :require => false
+
+group :development, :test do # 也包含 test 是為了讓寫 test case 時也可以 debug
+  # gem "pry-plus"
+  gem "hirb", :require => false
+  gem "hirb-unicode", :require => false
+
+  # RSpec
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+end
+
+group :development do
+  # preview mail
+  gem "letter_opener"
+end
+
+# group :test do
+#   gem "faker"
+#   gem "capybara"
+#   gem "database_cleaner"
+#   gem "launchy"
+#   gem "selenium-webdriver"
+# end
+
+# User account
+gem 'devise'
+gem 'devise-i18n'
+
+# i18n
+gem "rails-i18n"
+
+# config file
+gem 'settingslogic'
+
+#
+gem 'active_hash'
+gem 'decent_exposure', '3.0.0.beta2'
+
+# form
+gem 'simple_form'
+
+# send to js
+gem "i18n-js", ">= 3.0.0.rc12"
+
+# Style
+gem 'slim'
+gem 'slim-rails'
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
