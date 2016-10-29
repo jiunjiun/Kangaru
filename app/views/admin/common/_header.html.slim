@@ -1,0 +1,32 @@
+nav.navbar.px-navbar
+  /! Header
+  .navbar-header
+    a.navbar-brand.px-demo-brand href="index.html"
+      span.px-demo-logo.bg-primary
+        span.px-demo-logo-1
+        span.px-demo-logo-2
+        span.px-demo-logo-3
+        span.px-demo-logo-4
+        span.px-demo-logo-5
+        span.px-demo-logo-6
+        span.px-demo-logo-7
+        span.px-demo-logo-8
+        span.px-demo-logo-9
+      = t('title')
+  /! Navbar togglers
+  button.navbar-toggle.collapsed aria-expanded="false" data-target="#px-demo-navbar-collapse" data-toggle="collapse" type="button"
+    i.navbar-toggle-icon
+  /! Collect the nav links, forms, and other content for toggling
+  #px-demo-navbar-collapse.collapse.navbar-collapse
+    ul.nav.navbar-nav.navbar-right
+      li.dropdown
+        a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+          span.hidden-md= current_user.email
+        ul.dropdown-menu
+          li.divider
+          li
+            = link_to destroy_user_session_path, method: :delete do
+              i.dropdown-icon.fa.fa-power-off
+              | &nbsp;&nbsp;
+              = t('helpers.sign_out')
+      /! /.navbar-collapse

@@ -1,0 +1,15 @@
+nav#px-demo-nav.px-nav.px-nav-left
+  button.px-nav-toggle data-toggle="px-nav" type="button"
+    span.px-nav-toggle-arrow
+    span.navbar-toggle-icon
+    span.px-nav-toggle-label.font-size-11 HIDE MENU
+  ul.px-nav-content
+    li.px-nav-item
+      = link_to admin_dashboard_path do
+        i.px-nav-icon.ion-ios-pulse-strong
+        span.px-nav-label
+          = t('dashboard')
+    li.px-nav-item
+      a href="boxes.html"
+        i.px-nav-icon.ion-ios-analytics
+        span.px-nav-label Boxes

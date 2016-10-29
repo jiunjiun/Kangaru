@@ -1,0 +1,83 @@
+zh-TW:
+  title        : 'Kangaru'
+
+  home         : '首頁'
+  sign_in      : '登入'
+  sign_out     : '登出'
+
+  # 後台
+  backend:      '後台'
+  back_fontend: '回前台'
+
+  dashboard:    'Dashboard'
+  adapter:      '接介設定'
+
+  helpers:
+    you_are_here     : '目前在:'
+    are_you_sure     : '確定刪除嗎?'
+    list             : '清單'
+    add              : '新增'
+    edit             : '修改'
+    show             : '顯示'
+    update           : '更新'
+    delete           : '刪除'
+    back             : '返回'
+    status           : '狀態'
+    posted_at        : '發佈時間:'
+    download         : '下載'
+    upload           : '上傳'
+    attachment       : '附件'
+    description      : '描述'
+    password_change  : '密碼修改'
+    top              : '最新文章'
+    read_more        : '繼續閱讀'
+    page_name        : '頁面'
+    last_time        : '最後更新'
+    upload_photos    : '圖片上傳'
+    drop_files_here  : '拖拉圖片到這'
+    or_click_to_pick_manually: '或點擊上傳'
+    back_page        : '上一頁'
+    continue         : '繼續'
+
+    successfully_created : '新增成功' # Your profile was successfully created.
+    successfully_updated : '更新成功' # Your profile was successfully updated.
+    create_fail          : '新增失敗'
+    update_fail          : '更新失敗'
+
+    submit:
+      create: "新增"
+      update: "更新"
+
+  date:
+    formats:
+      yymmdd: '%Y年%m月%d日'
+  time:
+    formats:
+      yymmdd: '%Y年%m月%d日'
+      yymmdd_s: '%Y/%m/%d'
+      ymds: '%Y-%m-%d %T'
+      long: '%Y年%m月%d日 %T'
+
+  simple_form:
+    labels:
+      user:
+        email:          'E-MAIL'
+        status:         '帳號狀態'
+        case_status:    '接案狀態'
+        name:           '姓名'
+        gender:         '性別'
+        birthday:       '生日'
+        phone:          '聯絡號碼'
+        city:           '市'
+        district:       '區'
+        address:        '地址'
+        activity_area:  '活動行政區'
+        activity_time:  '活動時段'
+        point:          'J幣'
+
+    placeholders:
+      user:
+        name:           '王小明'
+        birthday:       '2000-01-01'
+        phone:          '0987654321'
+        address:        '基湖路1號'
