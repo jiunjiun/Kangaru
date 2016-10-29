@@ -10,7 +10,14 @@ class User < ApplicationRecord
   has_many :senders
   has_many :messages, through: :senders
 
+  after_create :setup_adapters
+
   def adapter_line
     self.adapter_lines.last
+  end
+
+  private
+  def setup_adapters
+    self.adapter_lines.create! secret: nil, access_token: nil
   end
 end

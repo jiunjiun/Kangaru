@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   namespace :admin do
     get :dashboard, to: 'dashboard#index', as: :dashboard
 
-    resource :adapters
+    resources :adapters, only: [:index] do
+      collection do
+        put 'update/:adapter', to: 'adapters#update', as: :update
+      end
+    end
   end
 end

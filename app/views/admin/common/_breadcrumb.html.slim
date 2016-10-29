@@ -1,0 +1,9 @@
+ol.breadcrumb.page-breadcrumb
+  li
+    = link_to t('dashboard'), admin_dashboard_path
+  - breadcrumbs.each_with_index do |breadcrumb, i|
+    li class="#{(breadcrumbs.size-1) == i ? 'active' : ''}"
+      - if breadcrumb[:link].present?
+        = link_to breadcrumb[:title], breadcrumb[:link]
+      - else
+        = breadcrumb[:title]

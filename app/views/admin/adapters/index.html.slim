@@ -1,0 +1,17 @@
+== render partial: 'admin/common/breadcrumb', locals: {breadcrumbs: [{title: t('adapter')}]}
+
+.page-header
+  .row
+    .col-md-4.text-xs-center.text-md-left.text-nowrap
+      h1
+        i.page-header-icon.ion-ios-analytics
+        = t('adapter')
+
+.row
+  ul.nav.nav-tabs.nav-lg
+    li.active
+      a aria-expanded="false" data-toggle="tab" href="#adapters_line"
+        = t('adapters.line')
+  .tab-content.tab-content-bordered
+    #adapters_line.tab-pane.fade.active.in
+      = render 'form_line'
