@@ -1,6 +1,9 @@
 #= require jquery_ujs
 #= require PixelAdmin/bootstrap
-#= require PixelAdmin/pixeladmin
+#= require PixelAdmin/pixeladmin.min
+
+#= require noty
+
 #= require_self
 
 $ ->

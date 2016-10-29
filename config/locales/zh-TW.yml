@@ -48,6 +48,10 @@ zh-TW:
       create: "新增"
       update: "更新"
 
+  adapters:
+    line: 'Line'
+    facebook: 'Facebook'
+
   date:
     formats:
       yymmdd: '%Y年%m月%d日'
@@ -60,24 +64,9 @@ zh-TW:
 
   simple_form:
     labels:
+      adapter:
       user:
-        email:          'E-MAIL'
-        status:         '帳號狀態'
-        case_status:    '接案狀態'
-        name:           '姓名'
-        gender:         '性別'
-        birthday:       '生日'
-        phone:          '聯絡號碼'
-        city:           '市'
-        district:       '區'
-        address:        '地址'
-        activity_area:  '活動行政區'
-        activity_time:  '活動時段'
-        point:          'J幣'
+
 
     placeholders:
       user:
-        name:           '王小明'
-        birthday:       '2000-01-01'
-        phone:          '0987654321'
-        address:        '基湖路1號'

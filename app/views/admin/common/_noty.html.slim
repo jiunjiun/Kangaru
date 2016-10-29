@@ -1,0 +1,11 @@
+- if flash[:notice].present?
+  javascript:
+    notyMessage("#{flash[:notice]}");
+
+- if flash[:warning].present?
+  javascript:
+    notyWarning("#{flash[:warning]}");
+
+- if flash[:alert].present?
+  javascript:
+    notyError("#{flash[:alert]}");
