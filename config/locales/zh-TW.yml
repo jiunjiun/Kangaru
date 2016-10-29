@@ -10,7 +10,7 @@ zh-TW:
   back_fontend: '回前台'
 
   dashboard:    'Dashboard'
-  adapter:      '接介設定'
+  adapter:      '介面設定'
 
   helpers:
     you_are_here     : '目前在:'
