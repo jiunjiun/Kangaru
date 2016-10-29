@@ -1,6 +1,6 @@
-class CreateSenders < ActiveRecord::Migration[5.0]
+class CreateVisitors < ActiveRecord::Migration[5.0]
   def change
-    create_table :senders do |t|
+    create_table :visitors do |t|
       t.string :identifier
       t.string :name
       t.string :avatar

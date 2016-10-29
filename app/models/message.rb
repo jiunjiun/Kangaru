@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-  belongs_to :sender
+  belongs_to :visitor
   belongs_to :user, optional: true
   belongs_to :template, polymorphic: true
 
@@ -11,16 +11,16 @@ class Message < ApplicationRecord
         template = message_tempalte message_info
       end
 
-      sender_info = opts[:sender]
-      if sender_info.present?
-        sender = sender_info user, adapter, sender_info
+      visitor_info = opts[:visitor]
+      if visitor_info.present?
+        visitor = visitor_info user, adapter, visitor_info
       end
 
-      if template.present? and sender.present?
+      if template.present? and visitor.present?
         create!({
           kind: KeyValues::MessageKind.find_by_code('push').id,
           user: user,
-          sender: sender,
+          visitor: visitor,
           template: template
         })
       end
@@ -34,15 +34,15 @@ class Message < ApplicationRecord
         template = message_tempalte message_info
       end
 
-      sender_info = opts[:sender]
-      if sender_info.present?
-        sender = sender_info user, adapter, sender_info
+      visitor_info = opts[:visitor]
+      if visitor_info.present?
+        visitor = visitor_info user, adapter, visitor_info
       end
 
-      if template.present? and sender.present?
+      if template.present? and visitor.present?
         create!({
           kind: KeyValues::MessageKind.find_by_code('receive').id,
-          sender: sender,
+          visitor: visitor,
           template: template
         })
       end
@@ -57,12 +57,12 @@ class Message < ApplicationRecord
     end
   end
 
-  def self.sender_info user, adapter, sender_info
+  def self.visitor_info user, adapter, visitor_info
     prefix  = adapter.adaptable_type.gsub('Adapter', '').downcase
-    user_id = sender_info[:user_id]
-    sender = Sender.find_or_create_by!(identifier: "#{prefix}_#{user_id}") do |sender|
-      sender.user_id = user.id
-      sender.adapter_id = adapter.id
+    user_id = visitor_info[:user_id]
+    visitor = Visitor.find_or_create_by!(identifier: "#{prefix}_#{user_id}") do |visitor|
+      visitor.user_id = user.id
+      visitor.adapter_id = adapter.id
     end
   end
 end

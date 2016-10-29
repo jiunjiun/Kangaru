@@ -1,4 +1,4 @@
-class Sender < ApplicationRecord
+class Visitor < ApplicationRecord
   belongs_to :user
   belongs_to :adapter
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026152059) do
+ActiveRecord::Schema.define(version: 20161029103403) do
 
   create_table "adapter_lines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "secret"
@@ -36,28 +36,16 @@ ActiveRecord::Schema.define(version: 20161026152059) do
   end
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "sender_id"
+    t.integer  "visitor_id"
     t.integer  "user_id"
     t.integer  "kind"
     t.string   "template_type"
     t.integer  "template_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["sender_id"], name: "index_messages_on_sender_id", using: :btree
     t.index ["template_type", "template_id"], name: "index_messages_on_template_type_and_template_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
-  end
-
-  create_table "senders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "identifier"
-    t.string   "name"
-    t.string   "avatar"
-    t.integer  "user_id"
-    t.integer  "adapter_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["adapter_id"], name: "index_senders_on_adapter_id", using: :btree
-    t.index ["user_id"], name: "index_senders_on_user_id", using: :btree
+    t.index ["visitor_id"], name: "index_messages_on_visitor_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -77,9 +65,21 @@ ActiveRecord::Schema.define(version: 20161026152059) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "visitors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "identifier"
+    t.string   "name"
+    t.string   "avatar"
+    t.integer  "user_id"
+    t.integer  "adapter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["adapter_id"], name: "index_visitors_on_adapter_id", using: :btree
+    t.index ["user_id"], name: "index_visitors_on_user_id", using: :btree
+  end
+
   add_foreign_key "adapters", "users"
-  add_foreign_key "messages", "senders"
   add_foreign_key "messages", "users"
-  add_foreign_key "senders", "adapters"
-  add_foreign_key "senders", "users"
+  add_foreign_key "messages", "visitors"
+  add_foreign_key "visitors", "adapters"
+  add_foreign_key "visitors", "users"
 end
