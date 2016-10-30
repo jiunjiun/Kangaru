@@ -30,8 +30,8 @@ $ ->
                 time: value.template.created_at
               message_html = HandlebarsTemplates['admin/visitors/receive'](data)
 
-          $('#chat_modal').find('.messages').append(message_html)
-
+          $('#chat_modal .messages').append(message_html)
+        setTimeout("$('#chat_modal .messages').scrollTop(99999)", 150)
 
   setup_modal = (id, visitor_name) ->
     modal = $('#chat_modal')

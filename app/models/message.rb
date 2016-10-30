@@ -29,7 +29,7 @@ class Message < ApplicationRecord
     end
   end
 
-  def self.receive user, adapter, opts={}
+  def self.receive company, adapter, opts={}
     ActiveRecord::Base.transaction do
       message_info = opts[:message]
       if message_info.present?
@@ -38,7 +38,7 @@ class Message < ApplicationRecord
 
       visitor_info = opts[:visitor]
       if visitor_info.present?
-        visitor = visitor_info user, adapter, visitor_info
+        visitor = visitor_info company, adapter, visitor_info
       end
 
       if template.present? and visitor.present?
@@ -59,11 +59,11 @@ class Message < ApplicationRecord
     end
   end
 
-  def self.visitor_info user, adapter, visitor_info
+  def self.visitor_info company, adapter, visitor_info
     prefix  = adapter.adaptable_type.gsub('Adapter', '').downcase
     user_id = visitor_info[:user_id]
     visitor = Visitor.find_or_create_by!(identifier: "#{prefix}_#{user_id}") do |visitor|
-      visitor.company_id = user.company.id
+      visitor.company_id = company.id
       visitor.adapter_id = adapter.id
     end
   end

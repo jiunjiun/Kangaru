@@ -22,7 +22,7 @@ opts = {
   visitor: {user_id: 'U3cf7b54983989ca6b0a587a19cdfa13d'}
 }
 
-Message.receive user, adapter, opts
+Message.receive company, adapter, opts
 
 opts = {
   message: {type: :text, text: 'haha'},

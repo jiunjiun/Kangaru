@@ -25,7 +25,7 @@ App.chat = App.cable.subscriptions.create { channel: "ChatChannel" },
           time: data.message.template.created_at
         message_html = HandlebarsTemplates['admin/visitors/receive'](message)
 
-    $('#chat_modal').find('.messages').append(message_html)
+    $('#chat_modal').find('.messages').append(message_html).scrollTop(99999)
 
   push: (user_id, message) ->
     data = {
