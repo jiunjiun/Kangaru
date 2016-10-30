@@ -88,6 +88,10 @@ gem "rails-i18n"
 # config file
 gem 'settingslogic'
 
+# job
+gem 'sidekiq'
+gem 'sidekiq-status'
+
 #
 gem 'active_hash'
 gem 'decent_exposure', '3.0.0.beta2'
