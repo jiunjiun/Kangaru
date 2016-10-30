@@ -1,0 +1,29 @@
+== render partial: 'admin/common/breadcrumb', locals: {breadcrumbs: [{title: t('visitor')}]}
+
+.page-header
+  .row
+    .col-md-4.text-xs-center.text-md-left.text-nowrap
+      h1
+        i.page-header-icon.ion-chatbubbles
+        = t('visitor')
+
+.panel
+  .panel-heading
+    span.panel-title Table
+  table.table#visitor_table
+    thead
+      tr
+        th.col-md-2= t('visitors.from')
+        th.col-md-3= t('visitors.time')
+        th.col-md-2= t('visitors.name')
+        th.col-md-5= t('visitors.message')
+    tbody
+      - vitisors.each do |visitor|
+        tr data-id= visitor.id
+          td= visitor_from(visitor.identifier)
+          td= l visitor.last_time, format: :long
+          td= visitor_name(visitor)
+          td= visitor.last_message
+
+/! Modal
+= render 'chat_modal'

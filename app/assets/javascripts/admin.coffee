@@ -4,6 +4,10 @@
 
 #= require noty
 
+#= require handlebars.runtime
+#= require_tree ./templates
+
+#= require_tree ./admin
 #= require_self
 
 $ ->

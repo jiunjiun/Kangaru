@@ -10,6 +10,7 @@ zh-TW:
   back_fontend: '回前台'
 
   dashboard:    'Dashboard'
+  visitor:      '訪客'
   adapter:      '介面設定'
 
   helpers:
@@ -52,6 +53,12 @@ zh-TW:
     line: 'Line'
     facebook: 'Facebook'
 
+  visitors:
+    from: 'From'
+    name: '名字'
+    time: '時間'
+    message: '訊息'
+
   date:
     formats:
       yymmdd: '%Y年%m月%d日'
@@ -66,7 +73,5 @@ zh-TW:
     labels:
       adapter:
       user:
-
-
     placeholders:
       user:

@@ -3,3 +3,9 @@
 //= require PixelAdmin/widgets
 //= require PixelAdmin/themes/default.min
 
+
+#visitor_table {
+  tbody tr {
+    cursor: pointer;
+  }
+}
