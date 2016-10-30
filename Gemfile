@@ -102,6 +102,9 @@ gem 'simple_form'
 # send to js
 gem "i18n-js", ">= 3.0.0.rc12"
 
+# adapter
+gem 'line-bot-api'
+
 # Style
 gem 'slim'
 gem 'slim-rails'

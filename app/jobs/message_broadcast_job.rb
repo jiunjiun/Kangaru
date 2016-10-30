@@ -12,6 +12,7 @@ class MessageBroadcastJob < ApplicationJob
       template: message.template.as_json(except: [:id, :updated_at])
     }
 
+    push_adapter visitor, message
     ActionCable.server.broadcast "company_#{current_company}", action: message.kind, message: data
   end
 
@@ -26,6 +27,15 @@ class MessageBroadcastJob < ApplicationJob
       "#{visitor.name}(#{identifier_id})"
     else
       identifier_id
+    end
+  end
+
+  def push_adapter visitor, message
+    company = visitor.company
+    visitor_identifier_id = visitor.identifier.split('_').last
+    case visitor.adapter.adaptable_type
+    when 'AdapterLine'
+      Line::Message.push company, visitor_identifier_id, message
     end
   end
 end

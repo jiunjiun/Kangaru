@@ -3,8 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root 'home#index'
-
   namespace :admin do
     get :dashboard, to: 'dashboard#index', as: :dashboard
 
@@ -16,4 +14,7 @@ Rails.application.routes.draw do
 
     resources :visitors
   end
+
+  root 'home#index'
+  post 'callback/:company_token/:adapter', to: 'callback#index'
 end
