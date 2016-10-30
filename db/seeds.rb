@@ -29,4 +29,16 @@ opts = {
   visitor: {user_id: 'U3cf7b54983989ca6b0a587a19cdfa13d'}
 }
 
-Message.push user, adapter, opts
+Message.push user, opts
+
+
+# -- test
+# user = Company.last.users.last
+# adapter = Company.last.adapters.first
+
+# opts = {
+#   message: {type: :text, text: 'haha'},
+#   visitor: {user_id: 'U3cf7b54983989ca6b0a587a19cdfa13d'}
+# }
+
+# Message.push user, opts

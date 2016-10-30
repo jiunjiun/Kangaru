@@ -1,6 +1,6 @@
 class Admin::VisitorsController < AdminController
   expose :vitisors, -> { company.visitors }
-  expose :visitor
+  expose :visitor, find: ->(id, scope){ scope.includes(messages: [:template]).find(id) }
 
   def index
   end

@@ -3,8 +3,9 @@ class Message < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :template, polymorphic: true
 
+  after_create_commit { MessageBroadcastJob.perform_later self }
 
-  def self.push user, adapter, opts={}
+  def self.push user, opts={}
     ActiveRecord::Base.transaction do
       message_info = opts[:message]
       if message_info.present?
@@ -13,7 +14,8 @@ class Message < ApplicationRecord
 
       visitor_info = opts[:visitor]
       if visitor_info.present?
-        visitor = visitor_info user, adapter, visitor_info
+        user_id = visitor_info[:user_id]
+        visitor = Visitor.where('identifier like ?', "%#{user_id}").first
       end
 
       if template.present? and visitor.present?

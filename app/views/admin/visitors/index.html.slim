@@ -19,7 +19,7 @@
         th.col-md-5= t('visitors.message')
     tbody
       - vitisors.each do |visitor|
-        tr data-id= visitor.id
+        tr data-id=visitor.id data-uid=visitor.identifier.split('_').last
           td= visitor_from(visitor.identifier)
           td= l visitor.last_time, format: :long
           td= visitor_name(visitor)

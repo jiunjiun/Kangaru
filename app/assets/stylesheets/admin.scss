@@ -9,3 +9,10 @@
     cursor: pointer;
   }
 }
+
+#chat_modal {
+  .messages {
+    max-height: 480px;
+    overflow-y: auto;
+  }
+}

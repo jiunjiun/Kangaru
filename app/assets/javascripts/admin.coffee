@@ -1,4 +1,6 @@
 #= require jquery_ujs
+#= require cable
+
 #= require PixelAdmin/bootstrap
 #= require PixelAdmin/pixeladmin.min
 
