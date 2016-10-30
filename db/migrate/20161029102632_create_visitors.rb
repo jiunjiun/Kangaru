@@ -4,7 +4,7 @@ class CreateVisitors < ActiveRecord::Migration[5.0]
       t.string :identifier
       t.string :name
       t.string :avatar
-      t.references :user,    foreign_key: true
+      t.references :company, foreign_key: true
       t.references :adapter, foreign_key: true
 
       t.timestamps

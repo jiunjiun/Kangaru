@@ -20,13 +20,19 @@ ActiveRecord::Schema.define(version: 20161029103403) do
   end
 
   create_table "adapters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
+    t.integer  "company_id"
     t.string   "adaptable_type"
     t.integer  "adaptable_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["adaptable_type", "adaptable_id"], name: "index_adapters_on_adaptable_type_and_adaptable_id", using: :btree
-    t.index ["user_id"], name: "index_adapters_on_user_id", using: :btree
+    t.index ["company_id"], name: "index_adapters_on_company_id", using: :btree
+  end
+
+  create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "message_texts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -59,8 +65,10 @@ ActiveRecord::Schema.define(version: 20161029103403) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "company_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.index ["company_id"], name: "index_users_on_company_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -69,17 +77,18 @@ ActiveRecord::Schema.define(version: 20161029103403) do
     t.string   "identifier"
     t.string   "name"
     t.string   "avatar"
-    t.integer  "user_id"
+    t.integer  "company_id"
     t.integer  "adapter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["adapter_id"], name: "index_visitors_on_adapter_id", using: :btree
-    t.index ["user_id"], name: "index_visitors_on_user_id", using: :btree
+    t.index ["company_id"], name: "index_visitors_on_company_id", using: :btree
   end
 
-  add_foreign_key "adapters", "users"
+  add_foreign_key "adapters", "companies"
   add_foreign_key "messages", "users"
   add_foreign_key "messages", "visitors"
+  add_foreign_key "users", "companies"
   add_foreign_key "visitors", "adapters"
-  add_foreign_key "visitors", "users"
+  add_foreign_key "visitors", "companies"
 end

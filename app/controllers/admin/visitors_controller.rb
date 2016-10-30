@@ -1,5 +1,5 @@
 class Admin::VisitorsController < AdminController
-  expose :vitisors, -> { current_user.visitors }
+  expose :vitisors, -> { company.visitors }
   expose :visitor
 
   def index

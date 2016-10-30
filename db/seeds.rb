@@ -3,13 +3,16 @@
 #
 # Examples:
 
+# Add Company
+company = Company.create name: 'DevChat'
+
 # Add User
-user =  User.create email: 'user@user.com', password: '12345678'
+user = company.users.create email: 'user@user.com', password: '12345678'
 
 # Add Adapter Line
-adapter_line = user.adapter_line.update secret: '21457c1a4c5e9a585bb98f26b15ebf35', access_token: 'zXT5NITgiaajvgNoRLxxFVmm9R8eajGJ07gP5/cdL0o6RXgX3EX5uRODz0p86AstGpFaIenoFxCIBdeRJLTRu3z335LdDMIVvk9dglT05Npi/1n0qichzGiYrg3A73Ty8017rNqcffdqZQZHDNPkSwdB04t89/1O/w1cDnyilFU='
+adapter_line = company.adapter_line.update secret: '21457c1a4c5e9a585bb98f26b15ebf35', access_token: 'zXT5NITgiaajvgNoRLxxFVmm9R8eajGJ07gP5/cdL0o6RXgX3EX5uRODz0p86AstGpFaIenoFxCIBdeRJLTRu3z335LdDMIVvk9dglT05Npi/1n0qichzGiYrg3A73Ty8017rNqcffdqZQZHDNPkSwdB04t89/1O/w1cDnyilFU='
 
-adapter = user.adapters.first
+adapter = company.adapters.first
 
 # receive
 # Message.create kind: KeyValues::MessageKind.find_by_code('receive').id,

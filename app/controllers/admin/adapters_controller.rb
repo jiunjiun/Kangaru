@@ -1,6 +1,6 @@
 class Admin::AdaptersController < AdminController
-  expose :adapters, -> { current_user.adapters }
-  expose :adapter_line, -> { current_user.adapter_line }
+  expose :adapters, -> { company.adapters }
+  expose :adapter_line, -> { company.adapter_line }
 
   def index
   end

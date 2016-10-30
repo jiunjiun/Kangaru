@@ -61,7 +61,7 @@ class Message < ApplicationRecord
     prefix  = adapter.adaptable_type.gsub('Adapter', '').downcase
     user_id = visitor_info[:user_id]
     visitor = Visitor.find_or_create_by!(identifier: "#{prefix}_#{user_id}") do |visitor|
-      visitor.user_id = user.id
+      visitor.company_id = user.company.id
       visitor.adapter_id = adapter.id
     end
   end
