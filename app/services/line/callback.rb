@@ -16,6 +16,7 @@ module Line
     def parse_events
       body   = @request.body.read
       events = client.parse_events_from(body)
+      user_id = event['source']['userId']
       events.each do |event|
         case event
         when Line::Bot::Event::Message
@@ -24,7 +25,7 @@ module Line
           when Line::Bot::Event::MessageType::Text
             opts = {
               message: {type: :text, text: event.message['text']},
-              visitor: {user_id: event['source']['userId']}
+              visitor: parse_profile(user_id)
             }
             receive opts
           end
@@ -42,6 +43,15 @@ module Line
 
     def receive opts
       ::Message.receive @company, @company.adapter_line.adapter, opts
+    end
+
+    def parse_profile user_id
+      profile = Line::Profile.get @company, user_id
+      {
+        user_id: profile['userId'],
+        name: profile['displayName'],
+        avatar: profile['pictureUrl'],
+      }
     end
   end
 end

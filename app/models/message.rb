@@ -70,6 +70,8 @@ class Message < ApplicationRecord
     visitor = Visitor.find_or_create_by!(identifier: "#{prefix}_#{user_id}") do |visitor|
       visitor.company_id = company.id
       visitor.adapter_id = adapter.id
+      visitor.name       = visitor_info[:name]
+      visitor.avatar     = visitor_info[:avatar]
     end
   end
 end
