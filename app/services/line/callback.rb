@@ -41,7 +41,7 @@ module Line
     end
 
     def receive opts
-      Message.receive @company, @company.adapter_line.adapter, opts
+      ::Message.receive @company, @company.adapter_line.adapter, opts
     end
   end
 end

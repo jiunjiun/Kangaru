@@ -5,6 +5,11 @@ class Message < ApplicationRecord
 
   after_create_commit { MessageBroadcastJob.perform_later self }
 
+  module Kind
+    PUSH    = 1
+    RECEIVE = 2
+  end
+
   def self.push user, opts={}
     ActiveRecord::Base.transaction do
       message_info = opts[:message]

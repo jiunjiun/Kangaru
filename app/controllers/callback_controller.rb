@@ -1,4 +1,6 @@
 class CallbackController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   expose :company, -> { Company.find_by_token(params[:company_token]) }
 
   def index

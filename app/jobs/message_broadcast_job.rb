@@ -12,7 +12,7 @@ class MessageBroadcastJob < ApplicationJob
       template: message.template.as_json(except: [:id, :updated_at])
     }
 
-    push_adapter visitor, message
+    push_adapter visitor, message if message.kind == Message::Kind::PUSH
     ActionCable.server.broadcast "company_#{current_company}", action: message.kind, message: data
   end
 
