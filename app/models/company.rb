@@ -1,10 +1,10 @@
 class Company < ApplicationRecord
-  has_many :users
+  has_many :users, dependent: :destroy
 
-  has_many :adapters
+  has_many :adapters, dependent: :destroy
   has_many :adapter_lines, through: :adapters, source: :adaptable, source_type: 'AdapterLine'
 
-  has_many :visitors
+  has_many :visitors, dependent: :destroy
   has_many :messages, through: :visitors
 
   before_create :generate_token

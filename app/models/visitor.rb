@@ -2,7 +2,7 @@ class Visitor < ApplicationRecord
   belongs_to :company
   belongs_to :adapter
 
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   def last_message
     message = self.messages.last
