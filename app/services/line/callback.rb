@@ -16,8 +16,8 @@ module Line
     def parse_events
       body   = @request.body.read
       events = client.parse_events_from(body)
-      user_id = event['source']['userId']
       events.each do |event|
+        user_id = event['source']['userId']
         case event
         when Line::Bot::Event::Message
           response = nil
