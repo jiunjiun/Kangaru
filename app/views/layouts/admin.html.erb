@@ -34,6 +34,10 @@
     <script type="text/javascript"> window.jQuery || document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">'+"<"+"/script>"); </script>
   <![endif]-->
   <%= javascript_include_tag 'admin' %>
+  <%= javascript_tag do %>
+    I18n.defaultLocale = "<%= I18n.default_locale %>";
+    I18n.locale = "<%= I18n.locale %>";
+  <% end %>
   <%= render partial: "admin/common/noty" %>
 </body>
 </html>

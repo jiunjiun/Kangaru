@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
-  post 'callback/:company_token/:adapter', to: 'callback#index'
+  post 'callback/:company_token/:adapter', to: 'callback#index', as: :callback
 end

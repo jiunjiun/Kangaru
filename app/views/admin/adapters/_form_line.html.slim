@@ -1,5 +1,21 @@
 .panel
   .panel-body
+    fieldset.form-group
+      label for="line_webhook_url"= t('adapters.line_webhook_url')
+      / input#line_webhook_url.form-control placeholder="" type="text" value=line_webhook_path /
+      .input-group.m-b-2
+        input#line_webhook_url.form-control type="text" value=line_webhook_path /
+        span.input-group-btn
+          button.btn.btn-clipboard type="button" data-clipboard-target="#line_webhook_url" data-position="top" data-tooltip=t('helpers.clipboard')
+            i.fa.fa-clipboard
+
+      small.text-muted
+        = t('adapters.line_copy_to_line_developers')
+        | &nbsp;&nbsp;
+        = link_to 'https://developers.line.me/', 'https://developers.line.me/'
+
+.panel
+  .panel-body
     == simple_form_for [:admin, adapter_line], url: update_admin_adapters_path(:line), method: :PUT do |f|
       == f.input :secret
       == f.input :access_token

@@ -40,6 +40,9 @@ zh-TW:
     back_page        : '上一頁'
     continue         : '繼續'
 
+    clipboard:   '複製到剪貼簿'
+    clipboarded: '已複製到剪貼簿'
+
     successfully_created : '新增成功' # Your profile was successfully created.
     successfully_updated : '更新成功' # Your profile was successfully updated.
     create_fail          : '新增失敗'
@@ -52,6 +55,8 @@ zh-TW:
   adapters:
     line: 'Line'
     facebook: 'Facebook'
+    line_webhook_url: 'Webhook URL'
+    line_copy_to_line_developers: '複製到你的Line Developers'
 
   visitors:
     from: 'From'
