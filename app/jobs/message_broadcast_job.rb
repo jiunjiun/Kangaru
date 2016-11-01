@@ -9,7 +9,7 @@ class MessageBroadcastJob < ApplicationJob
       name: visitor_name(visitor),
       avatar: visitor.avatar,
       type: message.template_type,
-      template: message.template.as_json(except: [:id, :updated_at])
+      template: template_format message
     }
 
     push_adapter visitor, message if message.kind == Message::Kind::PUSH
@@ -27,6 +27,16 @@ class MessageBroadcastJob < ApplicationJob
       "#{visitor.name}(#{identifier_id})"
     else
       identifier_id
+    end
+  end
+
+  def template_format message
+    case message.template_type
+    when 'MessageText'
+      {
+        text: message.template.text,
+        created_at: I18n.l message.template.created_at, format: :long
+      }
     end
   end
 
