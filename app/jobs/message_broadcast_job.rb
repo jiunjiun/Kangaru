@@ -9,7 +9,7 @@ class MessageBroadcastJob < ApplicationJob
       name: visitor_name(visitor),
       avatar: visitor.avatar,
       type: message.template_type,
-      template: template_format message
+      template: template_format(message)
     }
 
     push_adapter visitor, message if message.kind == Message::Kind::PUSH
@@ -35,7 +35,7 @@ class MessageBroadcastJob < ApplicationJob
     when 'MessageText'
       {
         text: message.template.text,
-        created_at: I18n.l message.template.created_at, format: :long
+        created_at: I18n.l(message.template.created_at, format: :long)
       }
     end
   end
